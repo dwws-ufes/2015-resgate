@@ -1,0 +1,67 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/arquivos/modelos/decorador.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<ui:define name="titulo" value="Registro de Incidente" />
+
+	<ui:define name="conteudo">
+		<h1>Registro de Incidentesr</h1>
+		<f:view>
+			<h:form>
+				<p:dataTable var="incidente"
+					value="#{controladorChamadaIncidente.incidentes}"
+					binding="#{controladorChamadaIncidente.datatable}">
+
+					<p:column headerText="ID">
+						<h:outputText value="#{incidente.id}" />
+					</p:column>
+
+					<p:column headerText="Estado do Incidente">
+						<h:outputText value="#{incidente.estadoIncidente}" />
+					</p:column>
+
+					<p:column headerText="Endereço">
+						<h:outputText value="#{incidente.endereco}" />
+					</p:column>
+
+					<p:column headerText="Nivel de Prioridade">
+						<h:outputText value="#{incidente.nivelPrioridade}" />
+					</p:column>
+
+					<p:column headerText="Hospital">
+						<h:outputText value="#{incidente.hospital.nome}" />
+					</p:column>
+
+					<p:column headerText="Funções dos Funcionários">
+						<h:outputText value="#{incidente.funcaoFuncionarios}" />
+					</p:column>
+
+					<p:column headerText="Tipos de Equipamentos">
+						<h:outputText value="#{incidente.tipoEquipamentos}" />
+					</p:column>
+
+					<p:column headerText="Ação">
+						<h:commandButton value="Despachar"
+							action="#{controladorChamadaIncidente.despachar}"
+							rendered="#{empty incidente.despacho and incidente.incidenteAberto}" />
+						<h:commandButton value="Finalizar Despacho"
+							action="#{controladorChamadaIncidente.finalizarDespacho}"
+							rendered="#{not empty incidente.despacho and incidente.incidenteAberto}" />
+						<h:commandButton value="Editar"
+							action="#{controladorChamadaIncidente.editar}"
+							rendered="#{incidente.incidenteAberto}" />
+					</p:column>
+
+				</p:dataTable>
+				<br />
+				<p:commandButton action="/registrarChamada/form.xhtml"
+					value="Nova Chamada" />
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>
+

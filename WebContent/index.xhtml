@@ -1,0 +1,39 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/arquivos/modelos/decorador.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="titulo">Bem-vindo</ui:define>
+
+	<ui:define name="conteudo">
+		<h1>Bem-vindo ao Resgate</h1>
+
+		<br />
+		<h:panelGroup>
+			<p>
+				<p:outputLabel value="Seja bem-vindo(a) ao Resgate!" />
+			</p>
+		</h:panelGroup>
+		<h:panelGroup rendered="#{empty sessao.funcionarioLogado}">
+			<h:form>
+				<p:outputLabel value="Login " />
+				<p:inputText value="#{sessao.usuario}" required="true" />
+				<br />
+				<br />
+				<p:outputLabel value="Senha " />
+				<p:password value="#{sessao.senha}" required="true" />
+				<br />
+				<br />
+				<h:commandButton action="#{sessao.login}" value="OK" />
+			</h:form>
+		</h:panelGroup>
+
+		<h:panelGroup rendered="#{not empty sessao.funcionarioLogado}">
+			<p:outputLabel
+				value="Bem vindo ao Resgate #{sessao.funcionarioLogado.nome}" />
+		</h:panelGroup>
+
+	</ui:define>
+</ui:composition>

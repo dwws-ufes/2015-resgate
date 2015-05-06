@@ -1,0 +1,37 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/arquivos/modelos/decorador.xhtml">
+	<ui:define name="titulo" value="Cadastro de Hospital" />
+
+	<ui:define name="conteudo">
+		<h1>Cadastro de Hospital</h1>
+		<br />
+		<h:form>
+			<p>
+				<p:outputLabel value="ID: " />
+				<p:inputText value="#{controladorCadastrarHospital.hospital.id}"
+					readonly="true" />
+			</p>
+			<p>
+				<p:outputLabel value="Nome: " />
+				<p:inputText value="#{controladorCadastrarHospital.hospital.nome}" />
+			</p>
+			<p>
+				<p:outputLabel value="Endereço: " />
+				<p:inputText
+					value="#{controladorCadastrarHospital.hospital.endereco}" />
+			</p>
+			<p>
+				<p:commandButton action="#{controladorCadastrarHospital.salvar}"
+					value="OK" />
+				<p:commandButton action="/cadastrarHospital/listar.xhtml"
+					value="Listar" />
+			</p>
+		</h:form>
+	</ui:define>
+</ui:composition>
+

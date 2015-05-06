@@ -1,0 +1,47 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/arquivos/modelos/decorador.xhtml">
+	<ui:define name="titulo" value="Cadastro de Funcionários" />
+
+	<ui:define name="conteudo">
+		<h1>Cadastro de Funcionarios</h1>
+
+		<h:form>
+			<p:dataTable var="funcionario"
+				value="#{controladorCadastrarFuncionario.listagem}"
+				binding="#{controladorCadastrarFuncionario.datatable}">
+
+				<p:column headerText="ID">
+					<h:outputText value="#{funcionario.id}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{funcionario.nome}" />
+				</p:column>
+
+				<p:column headerText="ID da Ambulancia">
+					<h:outputText value="#{funcionario.ambulancia.id}" />
+				</p:column>
+
+				<p:column headerText="Funções">
+					<h:outputText value="#{funcionario.funcoesFuncionario}" />
+				</p:column>
+
+				<p:column headerText="Ação">
+					<h:commandButton value="Editar"
+						action="#{controladorCadastrarFuncionario.editar}" rendered="#{empty funcionario.ambulancia}"/>
+					<h:commandButton value="Excluir"
+						action="#{controladorCadastrarFuncionario.excluir}" rendered="#{empty funcionario.ambulancia}"/>
+				</p:column>
+
+			</p:dataTable>
+			<br />
+			<p:commandButton action="/cadastrarFuncionario/form.xhtml"
+				value="Novo Funcionario" />
+		</h:form>
+	</ui:define>
+</ui:composition>

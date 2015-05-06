@@ -1,0 +1,43 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/arquivos/modelos/decorador.xhtml">
+	<ui:define name="titulo" value="Cadastro de Equipamento" />
+
+	<ui:define name="conteudo">
+		<h1>Cadastro de Equipamento</h1>
+		<br />
+		<h:form>
+			<p:dataTable var="equipamento"
+				value="#{controladorCadastrarEquipamento.listagem}"
+				binding="#{controladorCadastrarEquipamento.datatable}">
+
+				<p:column headerText="ID">
+					<h:outputText value="#{equipamento.id}" />
+				</p:column>
+
+				<p:column headerText="ID da Ambulância">
+					<h:outputText value="#{equipamento.ambulancia.id}" />
+				</p:column>
+
+				<p:column headerText="Tipo">
+					<h:outputText value="#{equipamento.tipo}" />
+				</p:column>
+
+				<p:column headerText="Ação">
+					<h:commandButton value="Excluir"
+						action="#{controladorCadastrarEquipamento.excluir}"
+						rendered="#{empty equipamento.ambulancia}" />
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+		<br />
+		<p:commandButton action="/cadastrarEquipamento/form.xhtml"
+			value="Novo Equipamento" />
+	</ui:define>
+</ui:composition>

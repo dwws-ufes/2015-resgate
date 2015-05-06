@@ -1,0 +1,92 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/arquivos/modelos/decorador.xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<ui:define name="titulo" value="Registro de Chamada de Emergência" />
+
+	<ui:define name="conteudo">
+		<h1>Registro de Chamada de Emergência</h1>
+
+		<h:form>
+			<p>
+				<p:outputLabel value="ID Chamada: " />
+				<p:inputText value="#{controladorChamadaIncidente.chamada.id}"
+					readonly="true" />
+			</p>
+
+			<p>
+				<p:outputLabel value="Cidadão: " />
+				<p:inputText value="#{controladorChamadaIncidente.chamada.cidadao}" />
+			</p>
+
+			<p>
+				<p:outputLabel value="Endereço: " />
+				<p:inputText
+					value="#{controladorChamadaIncidente.incidente.endereco}" />
+			</p>
+
+			<p>
+				<p:outputLabel value="Número de Telefone: " />
+				<p:inputMask value="#{controladorChamadaIncidente.chamada.numero}" />
+			</p>
+
+			<p>
+				<p:outputLabel value="Descrição: " />
+				<p:inputText
+					value="#{controladorChamadaIncidente.chamada.descricao}" />
+			</p>
+			
+			<p>
+				<p:outputLabel value="Hospital: " />
+				<br />
+				<p:selectOneListbox 
+					value="#{controladorChamadaIncidente.nomeHospital}">
+					<f:selectItems
+						value="#{controladorCadastrarHospital.listagem}" />
+				</p:selectOneListbox>
+			</p>
+			
+			<p>
+				<p:outputLabel value="Funções dos Funcionários: " />
+				<br />
+				<p:selectManyMenu
+					value="#{controladorChamadaIncidente.funcoesFuncionario}">
+					<f:selectItems
+						value="#{controladorCadastrarFuncionario.listaOpcoesFuncoes}" />
+				</p:selectManyMenu>
+			</p>
+
+			<p>
+				<p:outputLabel value="Tipos de Equipamentos Necessários: " />
+				<br />
+				<p:selectManyMenu 
+					value="#{controladorChamadaIncidente.tiposEquipamentos}">
+					<f:selectItems
+						value="#{controladorCadastrarEquipamento.listaTipos}" />
+				</p:selectManyMenu>
+			</p>
+
+			<p>
+				<p:outputLabel value="Prioridade: " />
+				<br />
+				<p:selectOneButton 
+					value="#{controladorChamadaIncidente.incidente.nivelPrioridade}">
+					<f:selectItems
+						value="#{controladorChamadaIncidente.listaPrioridades}" />
+				</p:selectOneButton>
+			</p>
+			
+			<p>
+				<p:commandButton action="#{controladorChamadaIncidente.salvar}"
+					value="OK" />
+				<p:commandButton action="/registrarChamada/listar.xhtml"
+					value="Listar" />
+			</p>
+		</h:form>
+	</ui:define>
+</ui:composition>
+

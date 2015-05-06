@@ -1,0 +1,46 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/arquivos/modelos/decorador.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<ui:define name="titulo" value="Registro de Chamada de Emergência" />
+
+	<ui:define name="conteudo">
+		<h1>Registro de Chamdas</h1>
+		<br/>
+		<h:form>
+			<p:dataTable var="chamada"
+				value="#{controladorChamadaIncidente.chamadas}"
+				binding="#{controladorChamadaIncidente.datatable}">
+
+				<p:column headerText="ID: ">
+					<h:outputText value="#{chamada.id}" />
+				</p:column>
+
+				<p:column headerText="Numero: ">
+					<h:outputText value="#{chamada.numero}" />
+				</p:column>
+
+				<p:column headerText="Descrição: ">
+					<h:outputText value="#{chamada.descricao}" />
+				</p:column>
+				
+				<p:column headerText="Nome do Cidadão: ">
+					<h:outputText value="#{chamada.cidadao}" />
+				</p:column>
+				
+				<p:column headerText="Data/hora inicio da Chamda: ">
+					<h:outputText value="#{chamada.horaInicio}" />
+				</p:column>
+
+			</p:dataTable>
+			<br/>
+			<p:commandButton action="/registrarChamada/form.xhtml"
+				value="Nova Chamada" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+

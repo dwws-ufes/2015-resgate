@@ -1,0 +1,43 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/arquivos/modelos/decorador.xhtml">
+	<ui:define name="titulo" value="Cadastro de Hospital" />
+
+	<ui:define name="conteudo">
+		<h1>Cadastro de Hospital</h1>
+<br />
+		<h:form>
+			<p:dataTable var="hospital"
+				value="#{controladorCadastrarHospital.listagem}"
+				binding="#{controladorCadastrarHospital.datatable}">
+
+				<p:column headerText="ID">
+					<h:outputText value="#{hospital.id}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{hospital.nome}" />
+				</p:column>
+
+				<p:column headerText="Endereço">
+					<h:outputText value="#{hospital.endereco}" />
+				</p:column>
+
+				<p:column headerText="Ação">
+					<h:commandButton value="Editar"
+						action="#{controladorCadastrarHospital.editar}" />
+						<h:commandButton value="Excluir"
+						action="#{controladorCadastrarHospital.excluir}" />
+				</p:column>
+
+			</p:dataTable>
+			<br />
+			<p:commandButton action="/cadastrarHospital/form.xhtml"
+				value="Novo Hospital" />
+		</h:form>
+	</ui:define>
+</ui:composition>
