@@ -53,6 +53,7 @@ public class AplGerenciarDespacho {
 		}
 
 		if (ambulanciaDespacho == null) {
+			despachoDAO.getEm().getTransaction().rollback();
 			return "Não foi possível efetuar o despacho, pois não existem ambulâncias disponíveis";
 		}
 
@@ -70,6 +71,7 @@ public class AplGerenciarDespacho {
 
 		if (ambulanciaDespacho.getEquipamentos().size() != tiposRequeridos
 				.size()) {
+			despachoDAO.getEm().getTransaction().rollback();
 			return "Não foi possível efetuar o despacho, pois não existem equipamentos disponíveis";
 		}
 
@@ -91,6 +93,7 @@ public class AplGerenciarDespacho {
 
 		if (ambulanciaDespacho.getFuncionarios().size() != funcoesRequeridas
 				.size()) {
+			despachoDAO.getEm().getTransaction().rollback();
 			return "Não foi possível efetuar o despacho, pois não existem funcionários disponíveis";
 		}
 

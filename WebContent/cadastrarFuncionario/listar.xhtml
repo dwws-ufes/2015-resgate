@@ -8,40 +8,62 @@
 	<ui:define name="titulo" value="Cadastro de Funcionários" />
 
 	<ui:define name="conteudo">
-		<h1>Cadastro de Funcionarios</h1>
+		<h1>
+			<h:outputText value="#{msgs['funcionario.titulo']}" />
+		</h1>
 
 		<h:form>
 			<p:dataTable var="funcionario"
 				value="#{controladorCadastrarFuncionario.listagem}"
 				binding="#{controladorCadastrarFuncionario.datatable}">
 
-				<p:column headerText="ID">
+				<p:column headerText="#{msgs['crud.id']}">
 					<h:outputText value="#{funcionario.id}" />
 				</p:column>
 
-				<p:column headerText="Nome">
+				<p:column headerText="#{msgs['crud.nome']}">
 					<h:outputText value="#{funcionario.nome}" />
 				</p:column>
 
-				<p:column headerText="ID da Ambulancia">
+				<p:column headerText="#{msgs['funcionario.id.ambulancia']}">
 					<h:outputText value="#{funcionario.ambulancia.id}" />
 				</p:column>
 
-				<p:column headerText="Funções">
+				<p:column headerText="#{msgs['funcionario.funcoes']}">
 					<h:outputText value="#{funcionario.funcoesFuncionario}" />
 				</p:column>
 
-				<p:column headerText="Ação">
-					<h:commandButton value="Editar"
-						action="#{controladorCadastrarFuncionario.editar}" rendered="#{empty funcionario.ambulancia}"/>
-					<h:commandButton value="Excluir"
-						action="#{controladorCadastrarFuncionario.excluir}" rendered="#{empty funcionario.ambulancia}"/>
+				<p:column headerText="#{msgs['dados.ligados.titulo']}">
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Funcionario/RDF/#{funcionario.nome}"
+						target="_blank">
+						<center>
+							<h:outputText value="#{msgs['dados.ligados.rdf.xml']}" />
+						</center>
+					</h:outputLink>
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Funcionario/N-Triple/#{funcionario.nome}"
+						target="_blank">
+						<h:outputText value="#{msgs['dados.ligados.n.triple']}" />
+					</h:outputLink>
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Funcionario/Turtle/#{funcionario.nome}"
+						target="_blank">
+						<h:outputText value="#{msgs['dados.ligados.turtle']}" />
+					</h:outputLink>
 				</p:column>
-
+				<p:column headerText="#{msgs['crud.acao']}">
+					<h:commandButton value="#{msgs['crud.editar']}"
+						action="#{controladorCadastrarFuncionario.editar}"
+						rendered="#{empty funcionario.ambulancia}" />
+					<h:commandButton value="#{msgs['crud.excluir']}"
+						action="#{controladorCadastrarFuncionario.excluir}"
+						rendered="#{empty funcionario.ambulancia}" />
+				</p:column>
 			</p:dataTable>
 			<br />
 			<p:commandButton action="/cadastrarFuncionario/form.xhtml"
-				value="Novo Funcionario" />
+				value="#{msgs['funcionario.novo.funcionario']}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

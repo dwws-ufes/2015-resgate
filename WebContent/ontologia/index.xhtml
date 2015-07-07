@@ -1,0 +1,27 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/arquivos/modelos/decorador.xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<ui:define name="titulo" value="Registro de Chamada de Emergência" />
+
+	<ui:define name="conteudo">
+		<h1>Ontologia</h1>
+		<br/>
+		<h2>OntoUML</h2>
+		<img  src="#{facesContext.externalContext.requestContextPath}/arquivos/imagens/despacho.png" width="800px" height="400px" />
+		<br/>
+		<a target="_blank"
+            href="#{facesContext.externalContext.requestContextPath}/despacho.owl"
+             >
+ <element>
+ 	<h2>OWL</h2>
+ </element>
+		</a>
+		<br/>
+			</ui:define>
+</ui:composition>
+

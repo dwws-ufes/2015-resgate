@@ -8,10 +8,10 @@
 	<ui:define name="titulo" value="Cadastro de Equipamento" />
 
 	<ui:define name="conteudo">
-		<h1>Cadastro de Equipamentos</h1>
+		<h1><h:outputText value="#{msgs['equipamento.titulo']}" /></h1>
 		<br />
 		<h:form>
-			<p:outputLabel value="Tipo de Equipamento: " />
+			<p:outputLabel value="#{msgs['equipamento.tipo']}: " />
 			<p:selectOneMenu id="tipoEquipamento"
 				value="#{controladorCadastrarEquipamento.equipamento.tipo}">
 				<f:selectItems value="#{controladorCadastrarEquipamento.listaTipos}" />
@@ -19,9 +19,9 @@
 			<p>
 				<br />
 				<p:commandButton action="#{controladorCadastrarEquipamento.salvar}"
-					value="OK" />
+					value="#{msgs['btn.ok']}" />
 				<p:commandButton action="/cadastrarEquipamento/listar.xhtml"
-					value="Listar" />
+					value="#{msgs['btn.listar']}" />
 			</p>
 		</h:form>
 	</ui:define>

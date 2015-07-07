@@ -28,7 +28,12 @@ public class HospitalDAO extends BaseDAO<Hospital> {
 	public Hospital recuperarPorNome(String nome) {
 		String jpql = "select h from Hospital h where h.nome = '" + nome + "'";
 		TypedQuery<Hospital> query = getEm().createQuery(jpql, Hospital.class);
-		List<Hospital> hospital = query.getResultList();
-		return hospital.get(0);
+		List<Hospital> hospitais = query.getResultList();
+		if(hospitais != null && hospitais.size() > 0){
+			return hospitais.get(0);
+		}else{
+			return null;
+		}
+		
 	}
 }

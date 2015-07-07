@@ -1,0 +1,489 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://localhost:8080/despacho.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://localhost:8080/despacho.owl">
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Declaration>
+        <Class IRI="#Administrador"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ambulancia"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Atendente"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Chamada"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Contrato"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Despacho"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Equipamento"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FuncaoFuncionario"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Funcionario"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hospital"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Incidente"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Motorista"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Paramedico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pessoa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TipoEquipamento"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Administrador"/>
+        <Class IRI="#Funcionario"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ambulancia"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ambulancia"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#ambulancia"/>
+            <Class IRI="#Funcionario"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ambulancia"/>
+        <ObjectMinCardinality cardinality="2">
+            <ObjectProperty IRI="#ambulancia"/>
+            <Class IRI="#Equipamento"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ambulancia"/>
+        <ObjectMinCardinality cardinality="2">
+            <ObjectProperty IRI="#ambulancia"/>
+            <Class IRI="#Funcionario"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ambulancia"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#ambulancia"/>
+            <Class IRI="#Hospital"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Ambulancia"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#ambulancia"/>
+            <Class IRI="#Motorista"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Atendente"/>
+        <Class IRI="#Funcionario"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chamada"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Chamada"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#chamada"/>
+            <Class IRI="#Funcionario"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Contrato"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Contrato"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#contrato"/>
+            <Class IRI="#Funcionario"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Contrato"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#contrato"/>
+            <Class IRI="#Hospital"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Despacho"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Despacho"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#despacho"/>
+            <Class IRI="#Hospital"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Equipamento"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Equipamento"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#equipamento"/>
+            <Class IRI="#Ambulancia"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Equipamento"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#equipamento"/>
+            <Class IRI="#TipoEquipamento"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FuncaoFuncionario"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FuncaoFuncionario"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#funcaofuncionario"/>
+            <Class IRI="#Funcionario"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Funcionario"/>
+        <Class IRI="#Pessoa"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Funcionario"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Funcionario"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#funcionario"/>
+            <Class IRI="#Ambulancia"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Funcionario"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#funcionario"/>
+            <Class IRI="#Chamada"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Funcionario"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#funcionario"/>
+            <Class IRI="#Contrato"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Funcionario"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#funcionario"/>
+            <Class IRI="#FuncaoFuncionario"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Funcionario"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#funcionario"/>
+            <Class IRI="#Hospital"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <ObjectMinCardinality cardinality="2">
+            <ObjectProperty IRI="#hospital"/>
+            <Class IRI="#Ambulancia"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#chamada"/>
+            <Class IRI="#Funcionario"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hospital"/>
+            <Class IRI="#Contrato"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hospital"/>
+            <Class IRI="#Despacho"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hospital"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hospital"/>
+            <Class IRI="#Incidente"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Incidente"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Incidente"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#incidente"/>
+            <Class IRI="#Hospital"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Motorista"/>
+        <Class IRI="#Funcionario"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Motorista"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#motorista"/>
+            <Class IRI="#Ambulancia"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Paramedico"/>
+        <Class IRI="#Funcionario"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pessoa"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TipoEquipamento"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TipoEquipamento"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#tipoequipamento"/>
+            <Class IRI="#Equipamento"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Ambulancia"/>
+        <Class IRI="#Chamada"/>
+        <Class IRI="#Contrato"/>
+        <Class IRI="#Despacho"/>
+        <Class IRI="#Equipamento"/>
+        <Class IRI="#Funcionario"/>
+        <Class IRI="#Hospital"/>
+        <Class IRI="#Incidente"/>
+        <Class IRI="#Pessoa"/>
+    </DisjointClasses>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#ambulancia"/>
+        <ObjectProperty IRI="#equipamento"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#ambulancia"/>
+        <ObjectProperty IRI="#funcionario"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hospital"/>
+        <ObjectProperty IRI="#ambulancia"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#motorista"/>
+        <ObjectProperty IRI="#ambulancia"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#funcionario"/>
+        <ObjectProperty IRI="#chamada"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#contrato"/>
+        <ObjectProperty IRI="#funcionario"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#contrato"/>
+        <ObjectProperty IRI="#hospital"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hospital"/>
+        <ObjectProperty IRI="#despacho"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hospital"/>
+        <ObjectProperty IRI="#incidente"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#ambulancia"/>
+        <Class IRI="#Ambulancia"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#chamada"/>
+        <Class IRI="#Chamada"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#chamada"/>
+        <Class IRI="#Hospital"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#contrato"/>
+        <Class IRI="#Contrato"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#despacho"/>
+        <Class IRI="#Despacho"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#equipamento"/>
+        <Class IRI="#Equipamento"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#funcaofuncionario"/>
+        <Class IRI="#FuncaoFuncionario"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#funcionario"/>
+        <Class IRI="#Funcionario"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hospital"/>
+        <Class IRI="#Hospital"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#incidente"/>
+        <Class IRI="#Incidente"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#motorista"/>
+        <Class IRI="#Motorista"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#tipoequipamento"/>
+        <Class IRI="#TipoEquipamento"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ambulancia"/>
+        <Class IRI="#Equipamento"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ambulancia"/>
+        <Class IRI="#Funcionario"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ambulancia"/>
+        <Class IRI="#Hospital"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#ambulancia"/>
+        <Class IRI="#Motorista"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#chamada"/>
+        <Class IRI="#Funcionario"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#contrato"/>
+        <Class IRI="#Funcionario"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#contrato"/>
+        <Class IRI="#Hospital"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#despacho"/>
+        <Class IRI="#Hospital"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#equipamento"/>
+        <Class IRI="#Ambulancia"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#equipamento"/>
+        <Class IRI="#TipoEquipamento"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#funcaofuncionario"/>
+        <Class IRI="#Funcionario"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#funcionario"/>
+        <Class IRI="#Ambulancia"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#funcionario"/>
+        <Class IRI="#Chamada"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#funcionario"/>
+        <Class IRI="#Contrato"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#funcionario"/>
+        <Class IRI="#FuncaoFuncionario"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#funcionario"/>
+        <Class IRI="#Hospital"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hospital"/>
+        <Class IRI="#Ambulancia"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hospital"/>
+        <Class IRI="#Contrato"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hospital"/>
+        <Class IRI="#Despacho"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hospital"/>
+        <Class IRI="#Incidente"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#incidente"/>
+        <Class IRI="#Hospital"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#motorista"/>
+        <Class IRI="#Ambulancia"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#tipoequipamento"/>
+        <Class IRI="#Equipamento"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version [Not Released]) http://owlapi.sourceforge.net -->
+

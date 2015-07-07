@@ -9,44 +9,44 @@
 	<ui:define name="titulo" value="Despacho" />
 
 	<ui:define name="conteudo">
-		<h1>Despachos</h1>
-		<f:view>
+	<h1><h:outputText value="#{msgs['despacho.titulo']}" /></h1>		
+	<f:view>
 			<h:form>
 				<p:dataTable var="despacho" value="#{controladorDespacho.listagem}"
 					binding="#{controladorDespacho.datatable}">
 
-					<p:column headerText="ID">
+					<p:column headerText="#{msgs['crud.id']}">
 						<h:outputText value="#{despacho.id}" />
 					</p:column>
 
-					<p:column headerText="ID do Incidente">
+					<p:column headerText="#{msgs['despacho.id.incidente']}">
 						<h:outputText value="#{despacho.incidente.id}" />
 					</p:column>
 					
-					<p:column headerText="ID das Ambulancias">
+					<p:column headerText="#{msgs['despacho.id.ambulancias']}">
 						<h:outputText value="#{despacho.idsAmbulancias}" />
 					</p:column>
 					
-					<p:column headerText="Estado do Despacho">
+					<p:column headerText="#{msgs['despacho.estado']}">
 						<h:outputText value="#{despacho.estado}" />
 					</p:column>
 					
-					<p:column headerText="Funcionarios">
+					<p:column headerText="#{msgs['despacho.funcionarios']}">
 						<h:outputText value="#{despacho.funcionariosAmbulancias}" />
 					</p:column>
 					
-					<p:column headerText="Equipamentos">
+					<p:column headerText="#{msgs['despacho.equipamentos']}">
 						<h:outputText value="#{despacho.equipamentosAmbulancias}" />
 					</p:column>
 					
-					<p:column headerText="Data/Hora do despacho">
+					<p:column headerText="#{msgs['despacho.data.hora']}">
 						<h:outputText value="#{despacho.dataHora}" />
 					</p:column>
 
 				</p:dataTable>
 
 				<p:commandButton action="/registrarChamada/form.xhtml"
-					value="Nova Chamada" />
+					value="#{msgs['chamada.nova.chamada']}" />
 			</h:form>
 		</f:view>
 	</ui:define>

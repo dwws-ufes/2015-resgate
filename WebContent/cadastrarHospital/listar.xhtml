@@ -8,36 +8,60 @@
 	<ui:define name="titulo" value="Cadastro de Hospital" />
 
 	<ui:define name="conteudo">
-		<h1>Cadastro de Hospital</h1>
-<br />
+		<h1>
+			<h:outputText value="#{msgs['hospital.titulo']}" />
+		</h1>
+		<br />
 		<h:form>
 			<p:dataTable var="hospital"
 				value="#{controladorCadastrarHospital.listagem}"
 				binding="#{controladorCadastrarHospital.datatable}">
 
-				<p:column headerText="ID">
+				<p:column headerText="#{msgs['crud.id']}">
 					<h:outputText value="#{hospital.id}" />
 				</p:column>
 
-				<p:column headerText="Nome">
+				<p:column headerText="#{msgs['crud.nome']}">
 					<h:outputText value="#{hospital.nome}" />
 				</p:column>
 
-				<p:column headerText="Endereço">
+				<p:column headerText="#{msgs['crud.endereco']}">
 					<h:outputText value="#{hospital.endereco}" />
 				</p:column>
 
-				<p:column headerText="Ação">
-					<h:commandButton value="Editar"
+				<p:column headerText="#{msgs['dados.ligados.titulo']}">
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Hospital/RDF/#{hospital.id}"
+						target="_blank">
+						<center>
+							<h:outputText value="#{msgs['dados.ligados.rdf.xml']}" />
+						</center>
+					</h:outputLink>
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Hospital/N-Triple/#{hospital.id}"
+						target="_blank">
+						<h:outputText value="#{msgs['dados.ligados.n.triple']}" />
+					</h:outputLink>
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Hospital/Turtle/#{hospital.id}"
+						target="_blank">
+						<h:outputText value="#{msgs['dados.ligados.turtle']}" />
+					</h:outputLink>
+
+				</p:column>
+
+
+				<p:column headerText="#{msgs['crud.acao']}">
+					<h:commandButton value="#{msgs['crud.editar']}"
 						action="#{controladorCadastrarHospital.editar}" />
-						<h:commandButton value="Excluir"
+					<h:commandButton value="#{msgs['crud.excluir']}"
 						action="#{controladorCadastrarHospital.excluir}" />
 				</p:column>
 
 			</p:dataTable>
 			<br />
 			<p:commandButton action="/cadastrarHospital/form.xhtml"
-				value="Novo Hospital" />
+				value="#{msgs['hospital.novo.hospital']}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

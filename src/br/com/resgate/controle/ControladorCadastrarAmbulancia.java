@@ -47,6 +47,11 @@ public class ControladorCadastrarAmbulancia extends ControladorBase implements C
 		return cadastrarAmbulancia.getLista();
 	}
 
+//	public String dadoRDF(){
+//		ambulancia = (Ambulancia) getDatatable().getRowData();
+//		ConversaodeDados.dadoRDF("http://localhost:2020/data/Ambulancia/"+ String.valueOf(ambulancia.getId()));
+//		return "http://localhost:2020/data/Ambulancia/"+ String.valueOf(ambulancia.getId());
+//	}
 	@Override
 	public String excluir() {
 		ambulancia = (Ambulancia) getDatatable().getRowData();

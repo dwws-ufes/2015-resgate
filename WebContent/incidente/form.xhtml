@@ -9,17 +9,17 @@
 	<ui:define name="titulo" value="Registro de Incidentes" />
 
 	<ui:define name="conteudo">
-		<h1>Registro de Incidentes</h1>
+		<h1><h:outputText value="#{msgs['incidente.titulo']}" /></h1>
 
 		<h:form>
 			<p>
-				<p:outputLabel value="ID Incidente: " />
+				<p:outputLabel value="#{msgs['crud.id']}: " />
 				<p:inputText value="#{controladorChamadaIncidente.incidente.id}"
 					readonly="true" />
 			</p>
 
 			<p>
-				<p:outputLabel value="Hospital: " />
+				<p:outputLabel value="#{msgs['incidente.hospital']}: " />
 				<br />
 				<p:selectOneListbox id="hospital"
 					value="#{controladorChamadaIncidente.incidente.hospital}">
@@ -30,9 +30,9 @@
 
 			<p>
 				<p:commandButton action="#{controladorChamadaIncidente.salvar}"
-					value="OK" />
+					value="#{msgs['btn.ok']}" />
 				<p:commandButton action="/incidente/listar.xhtml"
-					value="Listar" />
+					value="#{msgs['btn.listar']}" />
 			</p>
 		</h:form>
 	</ui:define>

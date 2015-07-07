@@ -9,57 +9,77 @@
 	<ui:define name="titulo" value="Registro de Incidente" />
 
 	<ui:define name="conteudo">
-		<h1>Registro de Incidentesr</h1>
+		<h1>
+			<h:outputText value="#{msgs['incidente.titulo']}" />
+		</h1>
 		<f:view>
 			<h:form>
 				<p:dataTable var="incidente"
 					value="#{controladorChamadaIncidente.incidentes}"
 					binding="#{controladorChamadaIncidente.datatable}">
 
-					<p:column headerText="ID">
+					<p:column headerText="#{msgs['crud.id']}">
 						<h:outputText value="#{incidente.id}" />
 					</p:column>
 
-					<p:column headerText="Estado do Incidente">
+					<p:column headerText="#{msgs['incidente.estado']}">
 						<h:outputText value="#{incidente.estadoIncidente}" />
 					</p:column>
 
-					<p:column headerText="Endereço">
+					<p:column headerText="#{msgs['crud.endereco']}">
 						<h:outputText value="#{incidente.endereco}" />
 					</p:column>
 
-					<p:column headerText="Nivel de Prioridade">
+					<p:column headerText="#{msgs['incidente.nivel.prioridade']}">
 						<h:outputText value="#{incidente.nivelPrioridade}" />
 					</p:column>
 
-					<p:column headerText="Hospital">
+					<p:column headerText="#{msgs['incidente.hospital']}">
 						<h:outputText value="#{incidente.hospital.nome}" />
 					</p:column>
 
-					<p:column headerText="Funções dos Funcionários">
+					<p:column headerText="#{msgs['funcionario.funcoes']}">
 						<h:outputText value="#{incidente.funcaoFuncionarios}" />
 					</p:column>
 
-					<p:column headerText="Tipos de Equipamentos">
+					<p:column headerText="#{msgs['equipamento.tipo']}">
 						<h:outputText value="#{incidente.tipoEquipamentos}" />
 					</p:column>
 
-					<p:column headerText="Ação">
+					<p:column headerText="#{msgs['dados.ligados.titulo']}">
+						<h:outputLink
+							value="#{facesContext.externalContext.requestContextPath}/data/Incidente/RDF/#{incidente.id}"
+							target="_blank">
+							<center>
+								<h:outputText value="#{msgs['dados.ligados.rdf.xml']}" />
+							</center>
+						</h:outputLink>
+						<h:outputLink
+							value="#{facesContext.externalContext.requestContextPath}/data/Incidente/N-Triple/#{incidente.id}"
+							target="_blank">
+							<h:outputText value="#{msgs['dados.ligados.n.triple']}" />
+						</h:outputLink>
+						<h:outputLink
+							value="#{facesContext.externalContext.requestContextPath}/data/Incidente/Turtle/#{incidente.id}"
+							target="_blank">
+							<h:outputText value="#{msgs['dados.ligados.turtle']}" />
+						</h:outputLink>
+					</p:column>
+					<p:column headerText="#{msgs['crud.acao']}">
 						<h:commandButton value="Despachar"
 							action="#{controladorChamadaIncidente.despachar}"
 							rendered="#{empty incidente.despacho and incidente.incidenteAberto}" />
 						<h:commandButton value="Finalizar Despacho"
 							action="#{controladorChamadaIncidente.finalizarDespacho}"
 							rendered="#{not empty incidente.despacho and incidente.incidenteAberto}" />
-						<h:commandButton value="Editar"
+						<h:commandButton value="#{msgs['crud.editar']}"
 							action="#{controladorChamadaIncidente.editar}"
 							rendered="#{incidente.incidenteAberto}" />
 					</p:column>
-
 				</p:dataTable>
 				<br />
 				<p:commandButton action="/registrarChamada/form.xhtml"
-					value="Nova Chamada" />
+					value="#{msgs['chamada.nova.chamada']}" /> />
 			</h:form>
 		</f:view>
 	</ui:define>

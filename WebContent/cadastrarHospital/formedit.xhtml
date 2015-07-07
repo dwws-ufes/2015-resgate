@@ -8,28 +8,28 @@
 	<ui:define name="titulo" value="Cadastro de Hospital" />
 
 	<ui:define name="conteudo">
-		<h1>Cadastro de Hospital</h1>
+		<h1><h:outputText value="#{msgs['hospital.titulo']}" /></h1>
 		<br />
 		<h:form>
 			<p>
-				<p:outputLabel value="ID: "
+				<p:outputLabel value="#{msgs['crud.id']}: "
 					 />
 				<p:inputText value="#{controladorCadastrarHospital.hospital.id}"/>
 			</p>
 			<p>
-				<p:outputLabel value="Nome: " />
+				<p:outputLabel value="#{msgs['crud.nome']}:  " />
 				<p:inputText value="#{controladorCadastrarHospital.hospital.nome}"
 					required="true" />
 			</p>
 			<p>
-				<p:outputLabel value="Endereço: " />
+				<p:outputLabel value="#{msgs['crud.endereco']}:  " />
 				<p:inputText
 					value="#{controladorCadastrarHospital.hospital.endereco}"
 					required="true" />
 			</p>
 			<p>
 				<p:commandButton action="#{controladorCadastrarHospital.atualizar}"
-					value="OK" />
+					value="#{msgs['btn.ok']}" />
 			</p>
 		</h:form>
 	</ui:define>

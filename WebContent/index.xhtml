@@ -8,31 +8,31 @@
 	<ui:define name="titulo">Bem-vindo</ui:define>
 
 	<ui:define name="conteudo">
-		<h1>Bem-vindo ao Resgate</h1>
+		<h1><h:outputText value="#{msgs['index.bem.vindo.funcionario']}" /></h1>
 
 		<br />
 		<h:panelGroup>
 			<p>
-				<p:outputLabel value="Seja bem-vindo(a) ao Resgate!" />
+				<p:outputLabel value="#{msgs['index.bem.vindo']}" />
 			</p>
 		</h:panelGroup>
 		<h:panelGroup rendered="#{empty sessao.funcionarioLogado}">
 			<h:form>
-				<p:outputLabel value="Login " />
+				<p:outputLabel value="#{msgs['crud.login']}: " />
 				<p:inputText value="#{sessao.usuario}" required="true" />
 				<br />
 				<br />
-				<p:outputLabel value="Senha " />
+				<p:outputLabel value="#{msgs['crud.senha']}: " />
 				<p:password value="#{sessao.senha}" required="true" />
 				<br />
 				<br />
-				<h:commandButton action="#{sessao.login}" value="OK" />
+				<h:commandButton action="#{sessao.login}" value="#{msgs['btn.ok']}" />
 			</h:form>
 		</h:panelGroup>
 
 		<h:panelGroup rendered="#{not empty sessao.funcionarioLogado}">
 			<p:outputLabel
-				value="Bem vindo ao Resgate #{sessao.funcionarioLogado.nome}" />
+				value="#{msgs['index.bem.vindo.funcionario']} #{sessao.funcionarioLogado.nome}" />
 		</h:panelGroup>
 
 	</ui:define>

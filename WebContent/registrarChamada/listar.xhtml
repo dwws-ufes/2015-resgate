@@ -9,8 +9,8 @@
 	<ui:define name="titulo" value="Registro de Chamada de Emergência" />
 
 	<ui:define name="conteudo">
-		<h1>Registro de Chamdas</h1>
-		<br/>
+		<h1>Registro de Chamadas</h1>
+		<br />
 		<h:form>
 			<p:dataTable var="chamada"
 				value="#{controladorChamadaIncidente.chamadas}"
@@ -27,19 +27,41 @@
 				<p:column headerText="Descrição: ">
 					<h:outputText value="#{chamada.descricao}" />
 				</p:column>
-				
+
 				<p:column headerText="Nome do Cidadão: ">
 					<h:outputText value="#{chamada.cidadao}" />
 				</p:column>
-				
+
 				<p:column headerText="Data/hora inicio da Chamda: ">
 					<h:outputText value="#{chamada.horaInicio}" />
 				</p:column>
 
+				<p:column headerText="#{msgs['dados.ligados.titulo']}">
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Chamada/RDF/#{chamada.id}"
+						target="_blank">
+						<center>
+							<h:outputText value="#{msgs['dados.ligados.rdf.xml']}" />
+						</center>
+					</h:outputLink>
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Chamada/N-Triple/#{chamada.id}"
+						target="_blank">
+						<h:outputText value="#{msgs['dados.ligados.n.triple']}" />
+					</h:outputLink>
+					<h:outputLink
+						value="#{facesContext.externalContext.requestContextPath}/data/Chamada/Turtle/#{chamada.id}"
+						target="_blank">
+						<h:outputText value="#{msgs['dados.ligados.turtle']}" />
+					</h:outputLink>
+
+				</p:column>
+
+
 			</p:dataTable>
-			<br/>
+			<br />
 			<p:commandButton action="/registrarChamada/form.xhtml"
-				value="Nova Chamada" />
+				value="#{msgs['chamada.nova.chamada']}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

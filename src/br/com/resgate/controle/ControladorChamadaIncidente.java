@@ -64,6 +64,7 @@ public class ControladorChamadaIncidente extends ControladorBase implements
 	private String nomeHospital;
 
 	public String salvar() {
+		
 		chamadaEmergencial = false;
 		chamada.setHoraInicio(new Date());
 		registrarChamada.criar(chamada);

@@ -8,28 +8,46 @@
 	<ui:define name="titulo" value="Cadastro de Hospital" />
 
 	<ui:define name="conteudo">
-		<h1>Cadastro de Hospital</h1>
+		<h1>
+			<h:outputText value="#{msgs['hospital.titulo']}" />
+		</h1>
 		<br />
 		<h:form>
 			<p>
-				<p:outputLabel value="ID: " />
+				<p:outputLabel value="#{msgs['crud.id']}: " />
 				<p:inputText value="#{controladorCadastrarHospital.hospital.id}"
 					readonly="true" />
 			</p>
 			<p>
-				<p:outputLabel value="Nome: " />
-				<p:inputText value="#{controladorCadastrarHospital.hospital.nome}" />
+				<p:outputLabel value="#{msgs['crud.nome']}: " />
+				<p:inputText id="name"
+					value="#{controladorCadastrarHospital.hospital.nome}" size="30">
+					<f:ajax event="blur" listener="#{controladorCadastrarHospital.existeHospital}"
+						execute="@this" render="endereco" />
+				</p:inputText>
 			</p>
 			<p>
-				<p:outputLabel value="Endereço: " />
-				<p:inputText
+				<p:outputLabel value="#{msgs['crud.endereco']}:  " />
+				<p:inputText id="endereco"
 					value="#{controladorCadastrarHospital.hospital.endereco}" />
 			</p>
 			<p>
+				<p:ajaxStatus onstart="PF('statusDialog').show()"
+					onsuccess="PF('statusDialog').hide()" />
+				<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+					closable="false" resizable="false" showHeader="false">
+					<p:graphicImage
+						name="#{facesContext.externalContext.requestContextPath}/arquivos/imagens/ajaxloader.gif" />
+				</p:dialog>
+				<p:commandButton
+					action="#{controladorCadastrarHospital.cadastrarTodosHospitais}"
+					value="#{msgs['hospital.btn.cadastrar']}" />
+			</p>
+			<p>
 				<p:commandButton action="#{controladorCadastrarHospital.salvar}"
-					value="OK" />
+					value="#{msgs['btn.ok']}" />
 				<p:commandButton action="/cadastrarHospital/listar.xhtml"
-					value="Listar" />
+					value="#{msgs['btn.listar']}" />
 			</p>
 		</h:form>
 	</ui:define>

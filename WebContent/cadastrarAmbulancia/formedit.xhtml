@@ -8,15 +8,15 @@
 	<ui:define name="titulo" value="Cadastro de Ambulâncias" />
 
 	<ui:define name="conteudo">
-		<h1>Cadastro de Ambulâncias</h1>
+		<h1><h:outputText value="#{msgs['ambulancia.titulo']}" /></h1>
 		<br />
 		<h:form name="ambulancia">
 			<p>
-				<h:outputText value="ID: "/>
+				<p:outputLabel value="#{msgs['crud.id']}: " />
 				<p:inputText value="#{controladorCadastrarAmbulancia.ambulancia.id}"/>
 			</p>
 			<p>
-				<h:outputText value="Placa: " />
+				<p:outputLabel value="#{msgs['ambulancia.placa']}: " />
 				<p:inputText
 					value="#{controladorCadastrarAmbulancia.ambulancia.placa}"
 					required="true" />
@@ -24,7 +24,7 @@
 
 			<p>
 				<p:commandButton action="#{controladorCadastrarAmbulancia.atualizar}"
-					value="OK" />
+					value="#{msgs['btn.ok']}" />
 			</p>
 		</h:form>
 	</ui:define>

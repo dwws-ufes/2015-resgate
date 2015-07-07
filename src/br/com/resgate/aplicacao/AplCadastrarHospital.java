@@ -24,7 +24,10 @@ public class AplCadastrarHospital {
 	private HospitalDAO hospitalDAO;
 
 	public void criar(Hospital hospital) {
-		hospitalDAO.salvar(hospital);
+		Hospital h = recuperarPorNome(hospital.getNome());
+		if(h == null){
+			hospitalDAO.salvar(hospital);
+		}
 	}
 
 	public void excluir(Hospital hospital) {

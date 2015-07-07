@@ -8,27 +8,27 @@
 	<ui:define name="titulo" value="Cadastro de Funcionários" />
 
 	<ui:define name="conteudo">
-		<h1>Cadastro de Funcionários</h1>
+		<h1><h:outputText value="#{msgs['funcionario.titulo']}" /></h1>
 
 		<h:form>
 			<p>
-				<p:outputLabel value="ID: " />
+				<p:outputLabel value="#{msgs['crud.id']}: " />
 				<p:inputText
 					value="#{controladorCadastrarFuncionario.funcionario.id}"
 					readonly="true" />
 			</p>
 			<p>
-				<p:outputLabel value="Nome: " />
+				<p:outputLabel value="#{msgs['crud.nome']}: " />
 				<p:inputText
 					value="#{controladorCadastrarFuncionario.funcionario.nome}" />
 			</p>
 			<p>
-				<p:outputLabel value="Senha: " />
+				<p:outputLabel value="#{msgs['crud.senha']}: " />
 				<p:password id="feedback"
 					value="#{controladorCadastrarFuncionario.funcionario.senha}"
 					feedback="true" />
 			</p>
-			<p:outputLabel value="Funções dos Funcionários: " />
+			<p:outputLabel value="#{msgs['funcionario.funcoes']}: " />
 			<p:selectManyMenu id="funcaoFuncionario"
 				value="#{controladorCadastrarFuncionario.funcoesFuncionario}">
 				<f:selectItems
@@ -37,9 +37,9 @@
 			<p>
 				<br />
 				<p:commandButton action="#{controladorCadastrarFuncionario.salvar}"
-					value="OK" />
+					value="#{msgs['btn.ok']}" />
 				<p:commandButton action="/cadastrarFuncionario/listar.xhtml"
-					value="Listar" />
+					value="#{msgs['btn.listar']}" />
 			</p>
 		</h:form>
 	</ui:define>

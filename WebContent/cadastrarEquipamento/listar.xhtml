@@ -8,27 +8,27 @@
 	<ui:define name="titulo" value="Cadastro de Equipamento" />
 
 	<ui:define name="conteudo">
-		<h1>Cadastro de Equipamento</h1>
+		<h1><h:outputText value="#{msgs['equipamento.titulo']}" /></h1>
 		<br />
 		<h:form>
 			<p:dataTable var="equipamento"
 				value="#{controladorCadastrarEquipamento.listagem}"
 				binding="#{controladorCadastrarEquipamento.datatable}">
 
-				<p:column headerText="ID">
+				<p:column headerText="#{msgs['crud.id']}">
 					<h:outputText value="#{equipamento.id}" />
 				</p:column>
 
-				<p:column headerText="ID da Ambulância">
+				<p:column headerText="#{msgs['equipamento.id.ambulancia']}">
 					<h:outputText value="#{equipamento.ambulancia.id}" />
 				</p:column>
 
-				<p:column headerText="Tipo">
+				<p:column headerText="#{msgs['equipamento.tipo']}">
 					<h:outputText value="#{equipamento.tipo}" />
 				</p:column>
 
-				<p:column headerText="Ação">
-					<h:commandButton value="Excluir"
+				<p:column headerText="#{msgs['crud.acao']}">
+						<h:commandButton value="#{msgs['crud.excluir']}"
 						action="#{controladorCadastrarEquipamento.excluir}"
 						rendered="#{empty equipamento.ambulancia}" />
 				</p:column>
@@ -38,6 +38,6 @@
 		</h:form>
 		<br />
 		<p:commandButton action="/cadastrarEquipamento/form.xhtml"
-			value="Novo Equipamento" />
+				value="#{msgs['equipamento.novo.equipamento']}" />
 	</ui:define>
 </ui:composition>

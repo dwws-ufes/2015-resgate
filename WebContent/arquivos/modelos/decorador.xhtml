@@ -1,60 +1,82 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link
-            href="#{facesContext.externalContext.requestContextPath}/arquivos/estilos/style.css"
-            rel="stylesheet" type="text/css" media="screen" />
-        <title><h:outputText value="Resgate :: " /><ui:insert
-                name="titulo" /></title>
-    </h:head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link
+		href="#{facesContext.externalContext.requestContextPath}/arquivos/estilos/style.css"
+		rel="stylesheet" type="text/css" />
+	<title><h:outputText value="#{msgs['menu.pre.titulo']}" /><ui:insert
+			name="titulo" /></title>
+</h:head>
 
-    <h:body>
-        <div id="wrapper">
-            <div id="header">
-                <div id="logo">
-                    <h1>
-                        <a href="#"><h:outputText
-                                value="Sistema de Controle de Ambulâncias" /></a>
-                    </h1>
-                    <p>
-                        <h:outputText value="Resgate" />
-                    </p>
-                </div>
-            </div>
-            <h:form>
-                <div id="menu">
-                    <ul>
-                        <li><h:commandLink value="Chamada de Emergência" action="/registrarChamada/form.xhtml" rendered="#{not empty sessao.funcionarioLogado and (sessao.admin or sessao.atendente)}"/></li>
-                        <li><h:commandLink value="Incidentes" action="/incidente/listar.xhtml" rendered="#{not empty sessao.funcionarioLogado and (sessao.admin or sessao.atendente)}"/></li>
-                        <li><h:commandLink value="Despacho" action="/despacho/listar.xhtml" rendered="#{not empty sessao.funcionarioLogado and (sessao.admin or sessao.atendente)}"/></li>
-                        <li><h:commandLink value="Cadastro de Ambulâncias" action="/cadastrarAmbulancia/listar.xhtml" rendered="#{not empty sessao.funcionarioLogado and sessao.admin}"/></li>
-                        <li><h:commandLink value="Cadastro de Funcionários" action="/cadastrarFuncionario/listar.xhtml" rendered="#{not empty sessao.funcionarioLogado and sessao.admin}"/></li>
-                        <li><h:commandLink value="Cadastro de Hospitais" action="/cadastrarHospital/listar.xhtml" rendered="#{not empty sessao.funcionarioLogado and sessao.admin}"/></li>
-                        <li><h:commandLink value="Cadastro de Equipamentos" action="/cadastrarEquipamento/listar.xhtml" rendered="#{not empty sessao.funcionarioLogado and sessao.admin}"/></li>
-                        <li><h:commandLink value="Logout" action="#{sessao.logout}" rendered="#{not empty sessao.funcionarioLogado}"/></li>
-                    </ul>
-                </div>
-            </h:form>
-            <div id="page">
-                <div id="page-bgtop">
-                    <div id="page-bgbtm">
-                        <div id="content">
-                            <h:messages globalOnly="true" />
-
-                            <ui:insert name="conteudo">Conteúdo não especificado...</ui:insert>
-                            <div style="clear: both;">&nbsp;</div>
-                        </div>
-                        <div style="clear: both;">&nbsp;</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </h:body>
+<h:body>
+	<div>
+		<div id="header">
+			<div id="logo">
+				<h1>
+					<a href="#"><h:outputText value="#{msgs['menu.subtitulo']}" /></a>
+				</h1>
+				<p>
+					<h:outputText value="#{msgs['menu.resgate']}" />
+				</p>
+			</div>
+			<img id="ajaxloader"
+				src="#{facesContext.externalContext.requestContextPath}/arquivos/imagens/ajaxloader.gif"
+				style="display: none; float: right;" />
+		</div>
+		<h:form>
+			<div id="menu">
+				<ul>
+					<li><h:commandLink value="#{msgs['menu.chamada.emergencia']}"
+							action="/registrarChamada/form.xhtml"
+							rendered="#{not empty sessao.funcionarioLogado and (sessao.admin or sessao.atendente)}" /></li>
+					<li><h:commandLink value="#{msgs['menu.incidentes']}"
+							action="/incidente/listar.xhtml"
+							rendered="#{not empty sessao.funcionarioLogado and (sessao.admin or sessao.atendente)}" /></li>
+					<li><h:commandLink value="#{msgs['menu.despacho']}"
+							action="/despacho/listar.xhtml"
+							rendered="#{not empty sessao.funcionarioLogado and (sessao.admin or sessao.atendente)}" /></li>
+					<li><h:commandLink value="#{msgs['menu.cadastro.ambulancia']}"
+							action="/cadastrarAmbulancia/listar.xhtml"
+							rendered="#{not empty sessao.funcionarioLogado and sessao.admin}" /></li>
+					<li><h:commandLink
+							value="#{msgs['menu.cadastro.funcionarios']}"
+							action="/cadastrarFuncionario/listar.xhtml" /></li>
+					<li><h:commandLink value="#{msgs['menu.cadastro.hospitais']}"
+							action="/cadastrarHospital/listar.xhtml"
+							rendered="#{not empty sessao.funcionarioLogado and sessao.admin}" /></li>
+					<li><h:commandLink
+							value="#{msgs['menu.cadastro.equipamentos']}"
+							action="/cadastrarEquipamento/listar.xhtml"
+							rendered="#{not empty sessao.funcionarioLogado and sessao.admin}" /></li>
+					<li><h:commandLink value="#{msgs['menu.ontologia']}"
+							action="/ontologia/index.xhtml"
+							rendered="#{not empty sessao.funcionarioLogado and sessao.admin}" /></li>
+					<li><h:commandLink value="#{msgs['menu.logout']}"
+							action="#{sessao.logout}"
+							rendered="#{not empty sessao.funcionarioLogado}" /></li>
+				</ul>
+			</div>
+		</h:form>
+		<div id="page">
+			<div id="page-bgtop">
+				<div id="page-bgbtm">
+					<div id="content">
+						<h:messages globalOnly="true" />
+						<ui:insert name="conteudo">
+							<h:outputText value="#{msgs['menu.erro']}" />
+						</ui:insert>
+						<div style="clear: both;">&nbsp;</div>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
 </html>
